@@ -20,6 +20,9 @@ ReadData <- function() {
     nrows = (line.end - line.start + 1), dec = ".",
     skip = (line.start - 2), col.names = header, stringsAsFactors = F, na.string = "?")
 
+  data$Time <- strptime(paste0(data$Date, " " , data$Time), format="%d/%m/%Y %H:%M:%s")
+  data$Date <- as.Date(data$Date, format = "%d/%m/%Y")
+
   data
 }
 
