@@ -4,10 +4,8 @@ source("read_data_by_line_range.R")
 
 uci.data <- ReadData()
 
-
-# Not sure why directly using png device only plots the last one
 png(filename = "plot4.png", width = 480, height = 480, units = "px")
-par(mfrow = c(2, 2), mar = c(4, 4, 1, 1))
+par(mfrow = c(2, 2), mar = c(4, 4, 1, 1)) # par must be called after opening device
 
 ## topleft
 plot(uci.data$Time, uci.data$Global_active_power, type = "l", xlab = "", ylab = "Global Active Power (kilowatts)")
@@ -27,7 +25,5 @@ legend("topright", col = c("black", "red", "blue"), lwd = 1,
 ## bottomright
 plot(uci.data$Time, uci.data$Global_reactive_power, type="l", xlab = "datetime",
   ylab = "Global_reactive_power")
-
-# dev.copy(png, file = "plot4.png", width = 480, height = 480, units = "px")
 
 dev.off()
